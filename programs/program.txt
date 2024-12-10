@@ -1,0 +1,25 @@
+x = 1
+print x
+scope
+
+
+
+{
+print x
+ x = 2
+ print x
+ x=      7
+ print
+ x
+ scope {
+ print y;
+ print x
+   x = 3
+   y = x
+   print x
+   print y
+ }
+ print x
+ print y
+}
+print x

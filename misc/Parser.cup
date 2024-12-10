@@ -1,0 +1,51 @@
+import java_cup.runtime.*;
+
+// tokens from the lexer (terminals)
+terminal String IDENTIFIER;
+terminal Integer NUMBER;
+terminal ASSIGN, LBRACE, RBRACE, PRINT, SCOPE;
+
+// non-terminals
+non terminal program;
+non terminal statement;
+non terminal statements;
+non terminal assignment;
+non terminal print_stmt;
+non terminal scope_stmt;
+non terminal close_scope_stmt;
+
+
+// Grammar
+program ::=
+    statements;
+
+statements ::=
+      statement
+    | statements statement
+    ;
+
+statement ::=
+      assignment
+    | print_stmt
+    | scope_stmt
+    | close_scope_stmt
+    ;
+
+assignment ::=
+      IDENTIFIER:i ASSIGN NUMBER:n
+        {: Interpreter.getInstance().processAssignmentLiteral(i, n); :}
+    | IDENTIFIER:i1 ASSIGN IDENTIFIER:i2
+        {: Interpreter.getInstance().processAssignmentIdent(i1, i2); :}
+        ;
+
+print_stmt ::=
+    PRINT IDENTIFIER:i
+        {: Interpreter.getInstance().processPrint(i); :} ;
+
+scope_stmt ::=
+    SCOPE LBRACE
+        {: Interpreter.getInstance().processScope(); :} ;
+
+close_scope_stmt ::=
+    RBRACE
+        {: Interpreter.getInstance().processClosingScope(); :} ;
