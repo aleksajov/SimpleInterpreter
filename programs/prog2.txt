@@ -1,9 +1,20 @@
 x = 1
 print x
-scope {
- x = 2
+scope
+
+
+
+{
+print x
+ x = +2
  print x
+ x=      7
+ print
+ x
+y=-64
  scope {
+ print y
+ print x
    x = 3
    y = x
    print x

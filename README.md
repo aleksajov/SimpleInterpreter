@@ -1,3 +1,6 @@
 Makefile configured for linux distributions
-To build project : make all
-To run interpreter for specified file placed in programs/ directory : Main ```<filename>```
+
+To run interpreter : make run (path for interpreted file will be read from standard input)
+To just build project : make all
+
+Jflex and CUP generators used for lexical and syntax analysis

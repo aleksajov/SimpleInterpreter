@@ -1,16 +1,17 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        if(args.length < 1){
-            System.err.println("Usage: java Main <file>");
-            System.exit(1);
-        }
-        String fileName = args[0];
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\n\n\nEnter relative path to the file: <dir>/<filename>.txt \n");
+        System.out.println("--->    ");
+        String relFilePath = scanner.nextLine();
+
         FileReader fr = null;
         try {
-            fr = new FileReader("programs/" + fileName);
+            fr = new FileReader(relFilePath);
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
             System.exit(1);

@@ -1,4 +1,4 @@
-import java_cup.runtime.Symbol;
+import java_cup.runtime.*;
 
 %%
 
@@ -27,7 +27,7 @@ print          { return new Symbol(sym.PRINT); }
 [a-zA-Z_][a-zA-Z0-9_]* { return new Symbol(sym.IDENTIFIER, yyline, yycolumn, yytext()); }
 
 // Integer literals
-[0-9]+         { return new Symbol(sym.NUMBER, yyline, yycolumn, Integer.parseInt(yytext())); }
+[+-]?[0-9]+         { return new Symbol(sym.NUMBER, yyline, yycolumn, Integer.parseInt(yytext())); }
 
 
 // Error handling
